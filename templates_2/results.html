@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <td>№</td>
+            <td>Ім'я</td>
+            <td>Оцінка</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in grades | sort(attribute="name", reverse=True) | sort(attribute="value") %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ student.name | upper }}</td>
+                <td>{{ student.value }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
